@@ -1,0 +1,73 @@
+CREATE TABLE roadkill_pages
+(
+	Id INT AUTO_INCREMENT NOT NULL,
+	Title VARCHAR(255) NOT NULL,
+	Tags VARCHAR(255) NULL,
+	CreatedBy VARCHAR(255) NOT NULL,
+	CreatedOn DATETIME NOT NULL,
+	IsLocked BOOLEAN NOT NULL,
+	ModifiedBy VARCHAR(255) NULL,
+	ModifiedOn DATETIME NULL,
+	PRIMARY KEY (Id)
+);
+
+CREATE TABLE roadkill_pagecontent
+(
+	Id VARCHAR(36) NOT NULL,
+	EditedBy VARCHAR(255) NOT NULL,
+	EditedOn DATETIME NOT NULL,
+	VersionNumber INT NOT NULL,
+	Text MEDIUMTEXT NULL,
+	PageId INT NOT NULL,
+	PRIMARY KEY (Id)
+);
+
+CREATE TABLE roadkill_collections
+(
+	Id INT AUTO_INCREMENT NOT NULL,
+	Name VARCHAR(255) NOT NULL,
+	Description VARCHAR(255) NULL,
+	Tags VARCHAR(255) NULL,
+	CreatedBy VARCHAR(255) NOT NULL,
+	CreatedOn DATETIME NOT NULL,
+	IsLocked BOOLEAN NOT NULL,
+	ModifiedBy VARCHAR(255) NULL,
+	ModifiedOn DATETIME NULL,
+	PRIMARY KEY (Id)
+);
+
+CREATE TABLE roadkill_collectionpage
+(
+	Id INT AUTO_INCREMENT NOT NULL,
+	CollectionId INT NOT NULL,
+	PageId INT NOT NULL,
+	VirtualPath VARCHAR(255) NULL,
+	PRIMARY KEY (Id)
+);
+
+/*ALTER TABLE roadkill_pagecontent ADD CONSTRAINT FK_roadkill_pageid FOREIGN KEY(pageid) REFERENCES roadkill_pages (id);*/
+
+CREATE TABLE roadkill_users
+(
+	Id VARCHAR(36) NOT NULL,
+	ActivationKey VARCHAR(255) NULL,
+	Email VARCHAR(255) NOT NULL,
+	Firstname VARCHAR(255) NULL,
+	Lastname VARCHAR(255) NULL,
+	IsEditor BOOLEAN NOT NULL,
+	IsAdmin BOOLEAN NOT NULL,
+	IsActivated BOOLEAN NOT NULL,
+	Password VARCHAR(255) NOT NULL,
+	PasswordResetKey VARCHAR(255) NULL,
+	Salt VARCHAR(255) NOT NULL,
+	Username VARCHAR(255) NOT NULL,
+	PRIMARY KEY (Id)
+);
+
+CREATE TABLE roadkill_siteconfiguration
+(
+	Id VARCHAR(36) NOT NULL,
+	Version VARCHAR(255) NOT NULL,
+	Content MEDIUMTEXT NOT NULL,
+	PRIMARY KEY (Id)
+);

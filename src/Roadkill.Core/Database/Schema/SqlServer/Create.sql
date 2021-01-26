@@ -22,7 +22,32 @@ CREATE TABLE [dbo].[roadkill_pagecontent]
 	PRIMARY KEY NONCLUSTERED (Id)
 );
 
+CREATE TABLE [dbo].[roadkill_collections]
+(
+	Id INT IDENTITY(1,1) NOT NULL,
+	Name NVARCHAR(255) NOT NULL,
+	Description NVARCHAR(255) NULL,
+	Tags NVARCHAR(255) NULL,
+	CreatedBy NVARCHAR(255) NOT NULL,
+	CreatedOn DATETIME NOT NULL,
+	IsLocked BIT NOT NULL,
+	ModifiedBy NVARCHAR(255) NULL,
+	ModifiedOn DATETIME NULL,
+	PRIMARY KEY (Id)
+);
+
+CREATE TABLE [dbo].[roadkill_collectionpage]
+(
+	Id INT IDENTITY(1,1) NOT NULL,
+	CollectionId INT NOT NULL,
+	PageId INT NOT NULL,
+	VirtualPath NVARCHAR(255) NULL,
+	PRIMARY KEY (Id)
+);
+
 ALTER TABLE [dbo].[roadkill_pagecontent] ADD CONSTRAINT [FK_roadkill_pageid] FOREIGN KEY([pageid]) REFERENCES [dbo].[roadkill_pages] ([id]);
+ALTER TABLE [dbo].[roadkill_collectionpage] ADD CONSTRAINT [FK_roadkill_collectionid] FOREIGN KEY([collectionid]) REFERENCES [dbo].[roadkill_collections] ([id]);
+ALTER TABLE [dbo].[roadkill_collectionpage] ADD CONSTRAINT [FK_roadkill_collectionpageid] FOREIGN KEY([pageid]) REFERENCES [dbo].[roadkill_pages] ([id]);
 
 CREATE TABLE [dbo].[roadkill_users]
 (
