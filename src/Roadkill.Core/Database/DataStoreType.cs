@@ -11,6 +11,7 @@ namespace Roadkill.Core.Database
 	public class DataStoreType
 	{
 		public static readonly DataStoreType MySQL = new DataStoreType("MySQL", "A MySQL database.", DataProvider.MySql5, new MySqlSchema());
+        public static readonly DataStoreType MariaDB = new DataStoreType("MariaDB", "A MariaDB database.", DataProvider.MySql5, new MariaDbSchema());
 		public static readonly DataStoreType Postgres = new DataStoreType("Postgres", "A Postgres database.", DataProvider.PostgreSql9, new PostgresSchema());
 		public static readonly DataStoreType MongoDB = new DataStoreType("MongoDB", "A MongoDB server, using the official MongoDB driver.", typeof(MongoDBRepository).FullName);
 
@@ -36,6 +37,7 @@ namespace Roadkill.Core.Database
 			{
 				MongoDB, 
 				MySQL, 
+				MariaDB,
 				Postgres, 
 				Sqlite, 
 				SqlServerCe, 
@@ -48,6 +50,7 @@ namespace Roadkill.Core.Database
 			{
 				MongoDB, 
 				MySQL, 
+				MariaDB,
 				Postgres
 			};
 		}

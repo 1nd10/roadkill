@@ -22,6 +22,29 @@ CREATE TABLE roadkill_pagecontent
 	PRIMARY KEY (Id)
 );
 
+CREATE TABLE roadkill_collections
+(
+	Id INT AUTO_INCREMENT NOT NULL,
+	Name VARCHAR(255) NOT NULL,
+	Description VARCHAR(255) NULL,
+	Tags VARCHAR(255) NULL,
+	CreatedBy VARCHAR(255) NOT NULL,
+	CreatedOn DATETIME NOT NULL,
+	IsLocked BOOLEAN NOT NULL,
+	ModifiedBy VARCHAR(255) NULL,
+	ModifiedOn DATETIME NULL,
+	PRIMARY KEY (Id)
+);
+
+CREATE TABLE roadkill_collectionpage
+(
+	Id INT AUTO_INCREMENT NOT NULL,
+	CollectionId INT NOT NULL,
+	PageId INT NOT NULL,
+	VirtualPath VARCHAR(255) NULL,
+	PRIMARY KEY (Id)
+);
+
 /*ALTER TABLE roadkill_pagecontent ADD CONSTRAINT FK_roadkill_pageid FOREIGN KEY(pageid) REFERENCES roadkill_pages (id);*/
 
 CREATE TABLE roadkill_users

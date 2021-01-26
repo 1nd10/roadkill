@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Roadkill.Core.Database.Entities;
 
 namespace Roadkill.Core.Database
 {
@@ -84,5 +86,13 @@ namespace Roadkill.Core.Database
         ///     The unique id for this object - for use with document stores that require a unique id for storage.
         /// </summary>
         public Guid ObjectId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the pages of the collection.
+        /// </summary>
+        /// <value>
+        ///     The pages of the collection.
+        /// </value>
+        public List<CollectionPage> Pages { get; set; }
     }
 }

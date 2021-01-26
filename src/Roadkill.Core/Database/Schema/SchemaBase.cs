@@ -1,11 +1,15 @@
-﻿using System;
+﻿#define TRACE
+
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using Roadkill.Core.Logging;
+
 
 namespace Roadkill.Core.Database.Schema
 {
@@ -44,7 +48,7 @@ namespace Roadkill.Core.Database.Schema
 		{
 			if (string.IsNullOrEmpty(resourcePath))
 				throw new ArgumentNullException("path", "The path is null or empty");
-
+			
 			Stream stream = typeof(SchemaBase).Assembly.GetManifestResourceStream(resourcePath);
 			if (stream == null)
 				throw new InvalidOperationException(string.Format("Unable to find '{0}' as an embedded resource", resourcePath));

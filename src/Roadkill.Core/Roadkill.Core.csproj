@@ -382,7 +382,11 @@
     <Compile Include="Attachments\IResponseWrapper.cs" />
     <Compile Include="Attachments\ResponseWrapper.cs" />
     <Compile Include="Database\Entities\Collection.cs" />
+    <Compile Include="Database\Entities\CollectionPage.cs" />
     <Compile Include="Database\Repositories\ISettingsRepository.cs" />
+    <Compile Include="Database\Repositories\LightSpeed\CollectionEntity.cs" />
+    <Compile Include="Database\Repositories\LightSpeed\CollectionPageEntity.cs" />
+    <Compile Include="Database\Schema\MariaDB\MariaDbSchema.cs" />
     <Compile Include="Email\EmailClient.cs" />
     <Compile Include="Email\IEmailClient.cs" />
     <Compile Include="Extensions\BootstrapHtmlExtensions.cs" />
@@ -653,6 +657,9 @@
     <EmbeddedResource Include="Localization\SiteStrings.sv.resx" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Database\Schema\MariaDB\Create.sql" />
+    <EmbeddedResource Include="Database\Schema\MariaDB\Drop.sql" />
+    <EmbeddedResource Include="Database\Schema\MariaDB\Upgrade.sql" />
     <Content Include="Localization\readme.txt" />
   </ItemGroup>
   <ItemGroup />
